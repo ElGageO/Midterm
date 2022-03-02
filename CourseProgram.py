@@ -8,21 +8,27 @@ You have been given partial code. The objective is to reproduce the output as sh
    and the output should reflect that as shown in the picture.
 '''
 
-
+import CourseClass as c
 
 def main():
 
-    name = 'MIS 4322 - Advanced Python'
-    crn = '250309'
-    seats = 4
-    status = 'open'
-    students = ['John','James','Jill','Jack','Joanne']
+   name = 'MIS 4322 - Advanced Python'
+   crn = '250309'
+   seats = 4
+   status = 'open'
+   students = ['John','James','Jill','Jack','Joanne']
 
-    
+   advpy = c.Course(name, crn, seats, status)
+
+   for student in students:
+      registration = c.Register(student, crn)
+      if advpy.get_status() == 'open':
+         advpy.update_seat_count()
+         print('\nStudent Name:', registration.get_name())
+         print('Course Name:', advpy.get_name())
+         print('CRN:', advpy.get_crn())
+         print('Seats Left:', advpy.get_seats(), '\n')
+      else:
+         print('Sorry ', registration.get_name(), ', registration is closed for ', advpy.get_name(), '\n', sep = '')
+
 main()
-
-
-
-        
-    
-    
